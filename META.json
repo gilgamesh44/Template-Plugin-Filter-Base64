@@ -1,7 +1,7 @@
 {
-   "abstract" : "It's new $module",
+   "abstract" : "encoding b64 filter for Template Toolkit",
    "author" : [
-      "mr.bbon <nu@nu-nu.ru>"
+      "bbon <bbon@mail.ru>"
    ],
    "dynamic_config" : 0,
    "generated_by" : "Minilla/v3.0.8, CPAN::Meta::Converter version 2.142690",
@@ -42,6 +42,9 @@
       },
       "runtime" : {
          "requires" : {
+            "MIME::Base64" : "0",
+            "Template" : "0",
+            "Template::Plugin::Filter" : "0",
             "perl" : "5.008001"
          }
       },
@@ -52,6 +55,20 @@
       }
    },
    "release_status" : "unstable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/bbon/Template-Plugin-Filter-Base64/issues"
+      },
+      "homepage" : "https://github.com/bbon/Template-Plugin-Filter-Base64",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/bbon/Template-Plugin-Filter-Base64.git",
+         "web" : "https://github.com/bbon/Template-Plugin-Filter-Base64"
+      }
+   },
    "version" : "0.01",
-   "x_authority" : "cpan:BBON"
+   "x_authority" : "cpan:BBON",
+   "x_contributors" : [
+      "mr.bbon <nu@nu-nu.ru>"
+   ]
 }

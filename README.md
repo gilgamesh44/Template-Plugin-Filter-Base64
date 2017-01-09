@@ -1,22 +1,31 @@
 # NAME
 
-Template::Plugin::Filter::Base64 - It's new $module
+Template::Plugin::Filter::Base64 - encoding b64 filter for Template Toolkit
 
 # SYNOPSIS
 
-    use Template::Plugin::Filter::Base64;
+    [% USE Filter.Base64 trim => 1 %]
+    [% FILTER b64 %]
+        Hello, world!
+    [% END %]
 
-# DESCRIPTION
+# OPTIONS
 
-Template::Plugin::Filter::Base64 is ...
+- trim
+
+    Optional. If true, removes trailing blank characters (and lf, cr) of an input string
+
+# SEE ALSO
+
+MIME::Base64 - Encoding and decoding of base64 strings [http://search.cpan.org/~gaas/MIME-Base64/Base64.pm](http://search.cpan.org/~gaas/MIME-Base64/Base64.pm)
 
 # LICENSE
 
-Copyright (C) mr.bbon.
+Copyright (C) bbon.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
 # AUTHOR
 
-mr.bbon <nu@nu-nu.ru>
+bbon <bbon@mail.ru>
