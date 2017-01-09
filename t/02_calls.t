@@ -25,13 +25,13 @@ ok($parser->process(\$input), 'Template process method is ok');
 ok($input eq $out, 'Simple output correct');
 
 $out = '';
-$input = q~[% USE Filter.Base64 %]
+$input = q~[% USE Filter.Base64 trim => 1 %]
     [% FILTER b64 %]
         Hello, world!
     [% END %]
 ~;
 
 ok($parser->process(\$input), 'Template process method with filter is ok');
-#ok($out eq '.col305{position:relative}', 'Test-filter output correct');
+ok($out eq 'SGVsbG8sIHdvcmxkIQ==', 'Test-filter output correct');
 
 done_testing();

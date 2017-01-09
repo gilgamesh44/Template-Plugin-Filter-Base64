@@ -3,6 +3,11 @@ use 5.008001;
 use strict;
 use warnings;
 
+use Template::Plugin::Filter;
+use base qw( Template::Plugin::Filter );
+
+use MIME::Base64 qw(encode_base64);
+
 our $VERSION = "0.01";
 
 sub init {
@@ -14,6 +19,16 @@ sub init {
 sub filter {
     my ($self, $text) = @_;
 
+    my %options = ();
+    if ($self->{ _CONFIG } && (ref($self->{ _CONFIG }) eq 'HASH')) {
+        if ($self->{ _CONFIG }->{trim}) {
+            $text =~ s/^\s+//ms;
+            $text =~ s/\s+$//ms;
+        }
+    }
+
+    my $encoded = encode_base64($text);
+    return $encoded
 }
 
 
@@ -28,11 +43,20 @@ Template::Plugin::Filter::Base64 - encoding b64 filter for Template Toolkit
 
 =head1 SYNOPSIS
 
-    use Template::Plugin::Filter::Base64;
+    [% USE Filter.Base64 trim => 1 %]
+    [% FILTER b64 %]
+        Hello, world!
+    [% END %]
 
-=head1 DESCRIPTION
+=head1 OPTIONS
 
-Template::Plugin::Filter::Base64 is ...
+=over
+
+=item trim
+
+Optional. If true, removes trailing blank characters (and lf, cr) of an input string
+
+=back
 
 =head1 SEE ALSO
 
