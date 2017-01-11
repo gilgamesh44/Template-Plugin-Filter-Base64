@@ -6,9 +6,11 @@ use warnings;
 use Template::Plugin::Filter;
 use base qw( Template::Plugin::Filter );
 
+use Encode;
 use MIME::Base64 qw(encode_base64);
+use HTML::Entities qw(encode_entities_numeric);
 
-our $VERSION = "0.01";
+our $VERSION = "0.02";
 
 sub init {
     my ($self) = @_;
@@ -25,9 +27,16 @@ sub filter {
             $text =~ s/^\s+//ms;
             $text =~ s/\s+$//ms;
         }
+        if ($self->{ _CONFIG }->{use_html_entity}) {
+            my $charset = $self->{ _CONFIG }->{use_html_entity};
+            $text = encode('UTF8', decode($charset, $text));
+            Encode::_utf8_on($text);
+            $text = encode_entities_numeric($text);
+        }
     }
 
     my $encoded = encode_base64($text);
+
     return $encoded
 }
 
@@ -43,7 +52,7 @@ Template::Plugin::Filter::Base64 - encoding b64 filter for Template Toolkit
 
 =head1 SYNOPSIS
 
-    [% USE Filter.Base64 trim => 1 %]
+    [% USE Filter.Base64 trim => 1, use_html_entity => 'cp1251' %]
     [% FILTER b64 %]
         Hello, world!
     [% END %]
@@ -55,6 +64,14 @@ Template::Plugin::Filter::Base64 - encoding b64 filter for Template Toolkit
 =item trim
 
 Optional. If true, removes trailing blank characters (and lf, cr) of an input string
+
+=back
+
+=over
+
+=item use_html_entity (string)
+
+Optional. Value means default charset (e.g. 'cp1251'). Result - convert text with html entities before base64-encoding
 
 =back
 

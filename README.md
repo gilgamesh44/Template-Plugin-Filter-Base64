@@ -4,7 +4,7 @@ Template::Plugin::Filter::Base64 - encoding b64 filter for Template Toolkit
 
 # SYNOPSIS
 
-    [% USE Filter.Base64 trim => 1 %]
+    [% USE Filter.Base64 trim => 1, use_html_entity => 'cp1251' %]
     [% FILTER b64 %]
         Hello, world!
     [% END %]
@@ -14,6 +14,10 @@ Template::Plugin::Filter::Base64 - encoding b64 filter for Template Toolkit
 - trim
 
     Optional. If true, removes trailing blank characters (and lf, cr) of an input string
+
+- use\_html\_entity (string)
+
+    Optional. Value means default charset (e.g. 'cp1251'). Result - convert text with html entities before base64-encoding
 
 # SEE ALSO
 

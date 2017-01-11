@@ -1,7 +1,9 @@
 requires 'perl', '5.008001';
+requires 'Encode';
+requires 'HTML::Entities';
+requires 'MIME::Base64';
 requires 'Template';
 requires 'Template::Plugin::Filter';
-requires 'MIME::Base64';
 
 on 'test' => sub {
     requires 'Test::More', '0.98';

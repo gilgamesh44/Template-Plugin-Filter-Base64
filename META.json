@@ -42,6 +42,8 @@
       },
       "runtime" : {
          "requires" : {
+            "Encode" : "0",
+            "HTML::Entities" : "0",
             "MIME::Base64" : "0",
             "Template" : "0",
             "Template::Plugin::Filter" : "0",
@@ -66,7 +68,7 @@
          "web" : "https://github.com/bbon/Template-Plugin-Filter-Base64"
       }
    },
-   "version" : "0.01",
+   "version" : "0.02",
    "x_authority" : "cpan:BBON",
    "x_contributors" : [
       "mr.bbon <nu@nu-nu.ru>"
