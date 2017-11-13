@@ -19,6 +19,10 @@ Template::Plugin::Filter::Base64 - encoding b64 filter for Template Toolkit
 
     Optional. Value means default charset (e.g. 'cp1251'). Result - convert text with html entities before base64-encoding
 
+- dont\_broken\_into\_lines\_each\_76\_char
+
+    Optional. If true, the returned encoded string will not be broken into lines when there are more than 76 characters.
+
 # SEE ALSO
 
 MIME::Base64 - Encoding and decoding of base64 strings [http://search.cpan.org/~gaas/MIME-Base64/Base64.pm](http://search.cpan.org/~gaas/MIME-Base64/Base64.pm)
